@@ -1,0 +1,35 @@
+workflows:
+  expo-android-release:
+    name: Expo Android Release (AAB)
+    instance_type: linux_x2
+    max_build_duration: 60
+
+    environment:
+      node: 18
+      groups:
+        - android_signing   # Codemagic auto keystore
+      vars:
+        EXPO_CLI_VERSION: latest
+
+    scripts:
+      - name: Install dependencies
+        script: |
+          npm install -g expo-cli
+          npm install
+
+      - name: Expo prebuild (Android)
+        script: |
+          npx expo prebuild --platform android --no-install
+
+      - name: Build Android App Bundle (AAB)
+        script: |
+          cd android
+          ./gradlew bundleRelease
+
+    artifacts:
+      - android/app/build/outputs/**/*.aab
+
+    publishing:
+      email:
+        recipients:
+          - nuramustaphaali333@gmail.com
