@@ -1,6 +1,6 @@
 workflows:
-  expo-android-apk:
-    name: Expo Android APK (Free Plan)
+  expo-android-aab:
+    name: Expo Android AAB (Free Plan)
     max_build_duration: 60
 
     environment:
@@ -18,10 +18,10 @@ workflows:
         script: |
           npx expo prebuild --platform android --no-install
 
-      - name: Build RELEASE APK
+      - name: Build RELEASE AAB
         script: |
           cd android
-          ./gradlew assembleRelease
+          ./gradlew bundleRelease
 
     artifacts:
-      - android/app/build/outputs/**/*.apk
+      - android/app/build/outputs/**/*.aab
