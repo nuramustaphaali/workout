@@ -4,12 +4,12 @@ import { initializeApp } from "firebase/app";
 
 // Your web app's Firebase configuration
 const firebaseConfig = {
-  apiKey: "REPLACE_HERE",
-  authDomain: "REPLACE_HERE",
-  projectId: "REPLACE_HERE",
-  storageBucket: "REPLACE_HERE",
-  messagingSenderId: "REPLACE_HERE",
-  appId: "REPLACE_HERE"
+  apiKey: "AIzaSyAWikHwMu0lZJnKuVlI0hu7LpqdSZDjNGw",
+  authDomain: "workout-c6fdf.firebaseapp.com",
+  projectId: "workout-c6fdf",
+  storageBucket: "workout-c6fdf.firebasestorage.app",
+  messagingSenderId: "workout-c6fdf.firebasestorage.app",
+  appId: "1:812899066062:web:671ffa485da42ba870f09f"
 };
 
 // Initialize Firebase
