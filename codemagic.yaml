@@ -1,29 +1,27 @@
 workflows:
-  expo-android-release:
-    name: Expo Android Release (Free Plan)
+  expo-android-apk:
+    name: Expo Android APK (Free Plan)
     max_build_duration: 60
 
     environment:
       node: 18
       groups:
-        - android_signing   # Uses Codemagic auto keystore (FREE)
-      vars:
-        EXPO_CLI_VERSION: latest
+        - android_signing
 
     scripts:
       - name: Install dependencies
         script: |
           npm install -g expo-cli
-          npm install
+          npm install --legacy-peer-deps
 
       - name: Expo prebuild (Android)
         script: |
           npx expo prebuild --platform android --no-install
 
-      - name: Build Android App Bundle (AAB)
+      - name: Build RELEASE APK
         script: |
           cd android
-          ./gradlew bundleRelease
+          ./gradlew assembleRelease
 
     artifacts:
-      - android/app/build/outputs/**/*.aab
+      - android/app/build/outputs/**/*.apk
